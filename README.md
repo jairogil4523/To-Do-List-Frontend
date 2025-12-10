@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # OvertimeFrontend
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.1.
@@ -61,3 +62,20 @@ For more information on using the Angular CLI, including detailed command refere
 =======
 # coomeva-overtime-front
 >>>>>>> d92b80c81f3bd16c2ba898e539e4833e40b5fe6e
+=======
+# To-Do-List-Frontend
+
+# Todo App - Prueba Técnica
+
+## Decisiones Técnicas
+- **Backend MVC**: Usé Web API con Controllers como "C", Models para EF Core como "M", y DTOs como "V" de la API.
+- **NgRx SignalStore**: Más moderno y simple que NgRx clásico.
+- **Angular Standalone**: Mejora performance y simplifica arquitectura.
+- **InMemory DB**: Rápido para prueba técnica.
+
+## Ejecución
+### Backend
+```bash
+cd TodoBackend
+dotnet run
+>>>>>>> 03be431562f2cc9df7c27e9bdb96c20e6dc7424b
