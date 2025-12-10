@@ -1,0 +1,913 @@
+.fecha-hora-group {
+  margin: 0;
+  /* quitar margen para que el grupo quede alineado con los demás campos */
+}
+
+::ng-deep .nav-row {
+  background-color: var(--color-info);
+  color: var(--color-light);
+  padding: 6px 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+::ng-deep .nav-row .today-label {
+  color: var(--color-light);
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+.border-info {
+  border-color: var(--color-info) !important;
+}
+
+.width-430 {
+  width: 100%;
+  max-width: 430px;
+}
+
+.width-710 {
+  width: 100%;
+  max-width: 710px;
+}
+
+.maxwidth-200 {
+  max-width: 200px;
+  width: 100%;
+}
+
+.relative {
+  position: relative !important;
+}
+
+.maxwidth-880 {
+  max-width: 880px;
+  width: 100%;
+}
+
+.padding-right-2rem {
+  padding-right: 2rem !important;
+}
+
+.icon-absolute-right {
+  position: absolute !important;
+  right: 10px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  pointer-events: none !important;
+}
+
+.btn-light-custom {
+  color: var(--color-info) !important;
+  border-color: var(--color-info) !important;
+}
+
+.card-body-warning {
+  background-color: var(--color-primary-50) !important;
+  color: var(--color-primary) !important;
+}
+
+.card-title {
+  padding: 15px;
+  border-radius: 15px;
+  border: white;
+}
+
+.text-secundary {
+  opacity: 0.6;
+  color: var(--color-secondary);
+}
+
+.card-title h4 {
+  margin-top: 1vh;
+  margin-bottom: 0;
+}
+
+
+/* === GRID PRINCIPAL === */
+.inputs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem 1.5rem;
+  /* mayor separación vertical entre filas */
+  background-color: var(--color-light);
+  padding: 18px;
+  border-radius: 12px;
+  align-items: start;
+  /* alinear el contenido de cada celda al tope */
+  box-shadow: 0 6px 18px rgba(27, 50, 97, .06);
+}
+
+/* Columnas */
+.cedula-group,
+.regional-group,
+.jefe-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Proceso + Justificación en fila */
+.proceso-justificacion {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  /* más separación entre proceso y justificación */
+}
+
+/* Fecha + Hora agrupadas */
+.fecha-hora-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  /* separar mejor fecha/hora verticalmente */
+}
+
+/* Fila inferior (ocupa todo el ancho) */
+.full-width {
+  grid-column: 1 / 4;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+/* Botones centrados */
+.form-actions {
+  grid-column: 1 / 4;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Nota */
+.nota {
+  grid-column: 1 / 4;
+  background: var(--color-primary-50);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-dark);
+}
+
+/* Cédula arriba + Tipo de Hora + Proceso */
+.cedula-group {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 32px;
+}
+
+/* Regional arriba + Fecha inicio + Hora inicio */
+.regional-group {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 32px;
+}
+
+.regional-fechas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+/* Jefe arriba + Fecha fin + Hora fin */
+.jefe-group {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 32px;
+}
+
+.jefe-fechas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+/* Justificación comparte fila con Proceso */
+.justificacion {
+  grid-column: auto;
+}
+
+/* Evidencia y Entregable mitad y mitad */
+.row-texto {
+  grid-column: span 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+/* FORM FIELDS */
+.form-floating {
+  min-width: 150px;
+  width: 100%;
+  align-self: start;
+  margin-bottom: 1rem;
+  /* separación adicional entre campos */
+  position: relative;
+  /* para que iconos posicionados absolutamente queden dentro del campo */
+}
+
+/* General inputs and textarea responsiveness */
+.form-floating input,
+.form-floating textarea,
+.form-floating select {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding-right: 2.5rem;
+  /* espacio para iconos posicionados a la derecha */
+}
+
+.form-floating textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.custom-floating>label {
+  position: absolute;
+  top: 0;
+  left: 0.75rem;
+  transform: translateY(-50%);
+  font-size: 0.85rem;
+  background: var(--color-light);
+  margin-bottom: auto;
+  padding: 0 4px;
+  color: var(--color-primary-600);
+  pointer-events: none;
+  height: auto;
+}
+
+.form-floating input::placeholder {
+  opacity: 0.6;
+  color: #999;
+}
+
+input {
+  border-width: 2px;
+}
+
+button {
+  border-radius: 50px;
+  border-width: 2px;
+}
+
+/* Botones centrados */
+.row-botones {
+  grid-column: span 3;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.row-botones button {
+  min-width: 140px;
+  box-sizing: border-box;
+}
+
+form .card-warning {
+  grid-column: span 3;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.proceso-justificacion {
+  grid-column: span 3;
+  /* Ocupa toda la fila */
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  /* Proceso más pequeño, Justificación más ancho */
+  gap: 1rem;
+}
+
+/* Cards */
+.card,
+.card-body {
+  border: none;
+  border-radius: 10px;
+}
+
+/* Custom dropdown */
+.custom-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-light);
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  max-height: 180px;
+  overflow-y: auto;
+  margin-top: 4px;
+  padding: 0;
+  z-index: 20;
+}
+
+.custom-options li {
+  list-style: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.custom-options li:hover {
+  background: var(--color-primary-50);
+}
+
+/* Datepicker personalizado Angular Material */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(47%) sepia(32%) saturate(1533%) hue-rotate(191deg) brightness(94%) contrast(89%);
+  cursor: pointer;
+}
+
+.form-floating .mat-datepicker-toggle {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+/* Success modal styles (local to registrar-tiempo) */
+/* Success modal is now a standalone component (see shared/success-modal) */
+
+.form-floating .mat-datepicker-toggle .mat-icon-button {
+  padding: 0;
+  margin: 0;
+  height: 24px;
+  width: 24px;
+}
+
+.form-floating .mat-datepicker-toggle .mat-icon {
+  color: var(--color-info);
+  font-size: 1.2rem;
+}
+
+.clock-icon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  color: var(--color-info);
+  font-size: 1.2rem;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Forzar que los relojes de Hora Inicio y Hora Fin se abran hacia la izquierda */
+#horaInicio+app-timepicker .custom-timepicker,
+#horaFin+app-timepicker .custom-timepicker {
+  left: auto !important;
+  right: 0 !important;
+}
+
+/* El overlay de Angular Material se inserta fuera del componente (en body),
+   por eso necesitamos forzarlo también globalmente con ::ng-deep.
+   Esto evita que el panel del reloj quede cortado o se abra fuera del viewport
+   cuando el input está cerca del borde derecho. */
+::ng-deep .cdk-overlay-pane .custom-timepicker {
+  left: auto !important;
+  right: 8px !important;
+  /* pequeño desplazamiento desde el borde del viewport */
+  transform-origin: right top !important;
+  /* animación desde la derecha */
+  max-width: calc(100vw - 16px) !important;
+  /* asegurar que no exceda el ancho de pantalla */
+  box-sizing: border-box !important;
+}
+
+/* Ajustes responsivos si el overlay ocupa demasiado espacio en pantallas pequeñas */
+@media (max-width: 576px) {
+  ::ng-deep .cdk-overlay-pane .custom-timepicker {
+    right: 8px !important;
+    left: 8px !important;
+    /* permitir que se centre si no cabe a la derecha */
+    max-width: calc(100vw - 16px) !important;
+  }
+}
+
+.mat-calendar-body-selected {
+  background-color: var(--color-primary) !important;
+  color: var(--color-light) !important;
+}
+
+.mat-calendar-body-cell:hover:not(.mat-calendar-body-selected) {
+  background-color: var(--color-primary-50) !important;
+  border-radius: 50% !important;
+}
+
+.mat-calendar-body-today {
+  border-color: var(--color-primary) !important;
+}
+
+.mat-calendar-header {
+  background: var(--color-light) !important;
+  color: var(--color-dark) !important;
+}
+
+.mat-calendar-arrow {
+  fill: #333 !important;
+}
+
+.mat-calendar-body-label {
+  color: #666 !important;
+}
+
+.mat-datepicker-toggle {
+  color: var(--color-info) !important;
+}
+
+/* Error state for invalid inputs */
+.input-error {
+  border-color: #a94442 !important;
+  /* rojo similar al mensaje de error */
+  box-shadow: 0 0 0 3px rgba(169, 68, 66, 0.06) !important;
+  background: #fff6f6 !important;
+}
+
+/* === Encabezado azul === */
+.mat-calendar-header {
+  background-color: var(--color-primary) !important;
+  color: var(--color-light) !important;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px 8px 0 0;
+}
+
+/* Custom header adjustments for our custom component */
+.custom-datepicker-header .header-top {
+  font-size: 1.05rem;
+  color: var(--color-light);
+  padding: 6px 0 2px 0;
+}
+
+.custom-datepicker-header .nav-row {
+  display: flex;
+  align-items: center;
+}
+
+
+/* Días seleccionados */
+.mat-calendar-body-selected {
+  background-color: var(--color-primary) !important;
+  color: var(--color-light) !important;
+  border-radius: 50% !important;
+}
+
+/* Hover sobre días */
+.mat-calendar-body-cell:hover:not(.mat-calendar-body-selected) {
+  background-color: var(--color-primary-50) !important;
+  border-radius: 50% !important;
+}
+
+/* Día actual */
+.mat-calendar-body-today {
+  border: 2px solid var(--color-primary) !important;
+  border-radius: 50% !important;
+}
+
+/* Flechas de navegación */
+.mat-calendar-arrow {
+  fill: var(--color-light) !important;
+}
+
+/* Botones del footer (LIMPIAR, CANCELAR, OK) */
+.mat-datepicker-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.mat-datepicker-actions button {
+  font-weight: bold;
+  color: var(--color-primary) !important;
+  text-transform: uppercase;
+}
+
+/* Forzar que los calendarios siempre se abran hacia abajo */
+.cdk-overlay-connected-position-bounding-box {
+  position: fixed !important;
+}
+
+.mat-datepicker-popup {
+  transform-origin: top !important;
+}
+
+.cdk-overlay-pane {
+  max-width: calc(100vw - 16px) !important;
+  box-sizing: border-box !important;
+}
+
+.mat-datepicker-content {
+  max-width: calc(100vw - 16px) !important;
+}
+
+@media (max-width: 640px) {
+  .cdk-overlay-pane {
+    left: 8px !important;
+    right: 8px !important;
+  }
+}
+
+/* === RESPONSIVE === */
+
+/* Pantallas grandes */
+@media (max-width: 1400px) {
+  .inputs-grid {
+    gap: 2.5rem 1.25rem;
+    padding: 16px;
+  }
+}
+
+/* Tablets grandes */
+@media (max-width: 1200px) {
+  .inputs-grid {
+    grid-template-columns: 1fr 1fr;
+    padding: 16px;
+    gap: 1.5rem 1rem;
+  }
+
+  .proceso-justificacion,
+  .row-texto,
+  .row-botones,
+  form .card-warning {
+    grid-column: span 2;
+  }
+
+  .fecha-hora-group {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .cedula-group,
+  .regional-group,
+  .jefe-group {
+    gap: 1.5rem;
+  }
+}
+
+/* Tablets medianas */
+@media (max-width: 992px) {
+  .inputs-grid {
+    padding: 14px;
+    gap: 1.25rem 0.75rem;
+  }
+
+  .proceso-justificacion {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .regional-fechas,
+  .jefe-fechas {
+    gap: 1rem;
+  }
+}
+
+/* Tamaño personalizado para el cuadro Justificación */
+#texto1b {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Tamaño personalizado para el campo Proceso */
+#texto1a {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Forzar ancho del input de Justificación */
+.form-floating input#texto1b {
+  width: 100% !important;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Inputs de fecha/hora adaptables */
+#fechaInicio,
+#horaInicio,
+#fechaFin,
+#horaFin {
+  width: 100%;
+  max-width: 240px;
+  min-width: 120px;
+  box-sizing: border-box;
+}
+
+/* Prevenir desbordamiento en el formulario */
+form.inputs-grid {
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+@media (max-width: 992px) {
+
+  #fechaInicio,
+  #horaInicio,
+  #fechaFin,
+  #horaFin {
+    max-width: 200px;
+    min-width: 90px;
+  }
+}
+
+/* Ensure form-floating inside fecha-hora-group matches input width so icons overlay input */
+.fecha-hora-group .form-floating {
+  max-width: 240px;
+}
+
+@media (max-width: 992px) {
+  .fecha-hora-group .form-floating {
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .fecha-hora-group .form-floating {
+    max-width: 100%;
+  }
+
+  .fecha-hora-group .form-floating .mat-datepicker-toggle,
+  .fecha-hora-group .form-floating .clock-icon,
+  .fecha-hora-group .form-floating .icon-absolute-right {
+    right: 8px;
+  }
+}
+
+@media (max-width: 576px) {
+
+  #fechaInicio,
+  #horaInicio,
+  #fechaFin,
+  #horaFin {
+    max-width: 100%;
+    min-width: 80px;
+  }
+}
+
+
+
+
+/* Tablets pequeñas */
+@media (max-width: 768px) {
+  .inputs-grid {
+    grid-template-columns: 1fr;
+    padding: 12px;
+    gap: 1.25rem;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .proceso-justificacion,
+  .row-texto,
+  .row-botones,
+  form .card-warning {
+    grid-column: span 1;
+    max-width: 100%;
+  }
+
+  .fecha-hora-group {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 100%;
+  }
+
+  .fecha-hora-group .form-floating {
+    max-width: 100% !important;
+  }
+
+  .fecha-hora-group .form-floating input {
+    max-width: 100% !important;
+  }
+
+  .row-botones {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    max-width: 100%;
+  }
+
+  .row-botones button {
+    min-width: 120px;
+    flex: 0 1 auto;
+  }
+
+  .padding-right-2rem {
+    padding-right: 0.5rem !important;
+  }
+
+  .width-430,
+  .width-710 {
+    max-width: 100%;
+  }
+
+  .card-title {
+    padding: 12px;
+    max-width: 100%;
+  }
+
+  .cedula-group,
+  .regional-group,
+  .jefe-group {
+    gap: 1rem;
+  }
+
+  #fechaInicio,
+  #horaInicio,
+  #fechaFin,
+  #horaFin {
+    max-width: 100% !important;
+  }
+}
+
+/* Móviles */
+@media (max-width: 576px) {
+  .inputs-grid {
+    padding: 8px;
+    gap: 1rem;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .proceso-justificacion,
+  .row-texto,
+  .row-botones,
+  form .card-warning {
+    grid-column: span 1;
+    max-width: 100%;
+  }
+
+  .fecha-hora-group {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    max-width: 100%;
+  }
+
+  .fecha-hora-group .form-floating {
+    max-width: 100% !important;
+  }
+
+  .row-botones {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    max-width: 100%;
+  }
+
+  .row-botones button {
+    width: 100%;
+    min-width: auto;
+    box-sizing: border-box;
+  }
+
+  .card-title {
+    padding: 8px;
+    max-width: 100%;
+  }
+
+  .card-title h4 {
+    font-size: 1rem;
+  }
+
+  .form-floating input,
+  .form-floating label {
+    font-size: 0.9rem;
+  }
+
+  .form-floating {
+    margin-bottom: 0.75rem;
+    max-width: 100%;
+  }
+
+  .form-floating input,
+  .form-floating textarea {
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  #fechaInicio,
+  #horaInicio,
+  #fechaFin,
+  #horaFin {
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  .inputs-grid {
+    padding: 8px;
+    gap: 0.75rem;
+  }
+
+  .card-title h4 {
+    font-size: 0.9rem;
+  }
+
+  .form-floating input,
+  .form-floating label,
+  .form-floating textarea {
+    font-size: 0.85rem;
+  }
+
+  .row-botones {
+    gap: 0.5rem;
+  }
+}
+
+/* Móviles muy pequeños */
+@media (max-width: 400px) {
+  .inputs-grid {
+    padding: 6px;
+  }
+
+  .proceso-justificacion {
+    gap: 0.5rem;
+  }
+
+  .row-texto {
+    gap: 0.5rem;
+  }
+
+  .card-title {
+    padding: 6px;
+  }
+
+  .form-floating {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+  .inputs-grid {
+    padding: 10px;
+    gap: 0.75rem;
+  }
+
+  .row-botones {
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+
+  .row-botones button {
+    width: auto;
+    min-width: 100px;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+
+  .form-floating input,
+  .form-floating textarea,
+  .form-floating select {
+    min-height: 48px;
+    font-size: 16px;
+    /* Prevent zoom on iOS */
+  }
+
+  .row-botones button {
+    min-height: 48px;
+    touch-action: manipulation;
+  }
+
+  .mat-datepicker-toggle .mat-icon-button {
+    min-height: 48px;
+    min-width: 48px;
+  }
+}
+
+/* Pantallas muy grandes */
+@media (min-width: 1401px) {
+  .inputs-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3.5rem 2rem;
+    padding: 18px;
+    /* max-width: 1200px; */
+    margin: 0 auto;
+  }
+}
+
+/* Pantallas grandes */
+@media (min-width: 1201px) and (max-width: 1400px) {
+  .inputs-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem 1.5rem;
+    padding: 18px;
+  }
+}

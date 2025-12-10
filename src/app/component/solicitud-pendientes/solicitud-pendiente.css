@@ -1,0 +1,519 @@
+/* ----------  Variables (ajústalas a tu tema) ---------- */
+:root {
+  --color-primary: #0d6efd;
+  --color-primary-50: rgba(13, 110, 253, .08);
+  --color-info: #0dcaf0;
+  --color-light: #ffffff;
+  --color-dark: #212529;
+  --color-secondary: #6c757d;
+  --filter-input-height: 44px;
+}
+
+/* ----------  Base  ---------- */
+.fecha-group {
+  margin: 0;
+}
+
+.card-title {
+  padding: 15px;
+  border-radius: 15px;
+  border: none;
+  background: var(--color-light);
+}
+
+.text-secundary {
+  opacity: .6;
+  color: var(--color-secondary);
+}
+
+.card-title h4 {
+  margin-top: 1vh;
+  margin-bottom: 0;
+}
+
+table {
+  width: 100%;
+}
+
+/* ----------  Card / Header / Filters  ---------- */
+.table-card {
+  background: var(--color-light);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(27, 50, 97, .06);
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+/* Alineación específica para todo lo que esté dentro de la cabecera de la tabla */
+.table-header .filters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.table-header .filters .filter-item {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+/* Normalizar la altura de los controles flotantes dentro de la cabecera */
+.table-header .filters .form-floating {
+  height: var(--filter-input-height);
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.table-header .filters .form-floating .form-control,
+.table-header .filters .form-floating input[matInput] {
+  height: calc(var(--filter-input-height) - 4px);
+  line-height: normal;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.table-header .search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-primary);
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+}
+
+.filters {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.filter-item.search-item,
+#searchInput {
+  display: block !important;
+}
+
+.filter-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-item label {
+  font-size: .85rem;
+  color: var(--color-secondary);
+  margin-bottom: 4px;
+}
+
+.filter-item .form-control {
+  padding: 8px 10px;
+  min-width: 140px;
+  border-radius: 8px;
+  border: 1px solid #e6e9ef;
+}
+
+/* ----------  Fecha grupo  ---------- */
+.fecha-group {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.fecha-group .form-floating {
+  width: 220px;
+  max-width: 100%;
+}
+
+.form-floating.custom-floating {
+  position: relative;
+}
+
+.form-floating.custom-floating label {
+  position: absolute;
+  left: 12px;
+  top: -9px;
+  background: var(--color-light);
+  padding: 0 6px;
+  font-size: .85rem;
+  color: var(--color-primary);
+}
+
+.form-floating.custom-floating input.form-control,
+.form-floating.custom-floating input[matInput] {
+  border: 2px solid var(--color-primary);
+  border-radius: 10px;
+  padding: 10px 40px 10px 12px;
+  height: var(--filter-input-height);
+  box-sizing: border-box;
+}
+
+.form-floating.custom-floating input.form-control:focus,
+.form-floating.custom-floating input[matInput]:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-primary-50);
+}
+
+/* ----------  Datepicker toggle  ---------- */
+.form-floating.custom-floating .mat-datepicker-toggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+
+.form-floating.custom-floating .mat-datepicker-toggle .mat-icon-button {
+  height: 28px;
+  width: 28px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-floating.custom-floating .mat-datepicker-toggle .mat-icon,
+::ng-deep .mat-datepicker-toggle .mat-icon {
+  color: var(--color-primary) !important;
+  fill: var(--color-primary) !important;
+}
+
+::ng-deep .mat-mdc-icon-button {
+  color: var(--color-primary) !important;
+}
+
+/* ----------  Tabla  ---------- */
+.table thead th {
+  text-align: center;
+  padding: 12px 8px;
+  border-bottom: 1px solid #e9edf5;
+  color: var(--color-dark);
+}
+
+.table tbody td {
+  padding: 12px 8px;
+  vertical-align: middle;
+  border-bottom: 1px solid #f1f4fa;
+  text-align: center;
+}
+
+.badge {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: .8rem;
+  display: inline-block;
+}
+
+.table-card .badge-success {
+  background: #e7f8ee !important;
+  color: #1e8a4a !important;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.table-card .badge-danger {
+  background: #fdecec !important;
+  color: #d13b4b !important;
+  font-weight: 600;
+}
+
+.table-card .badge-warning {
+  background: #fff3db !important;
+  color: #b07a1f !important;
+  font-weight: 600;
+}
+
+.acciones-cell {
+  text-align: webkit-left;
+}
+
+.acciones-cell .action-icon {
+  margin-right: 8px;
+  cursor: pointer;
+  color: var(--color-primary);
+}
+
+.acciones-cell .action-icon.text-danger {
+  color: var(--color-danger);
+}
+
+.table-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 12px;
+}
+
+/* ----------  Responsive ≤ 1024px  ---------- */
+@media (max-width: 1024px) {
+  .table-card {
+    padding: 16px;
+  }
+  
+  .filters {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .filter-item {
+    min-width: 180px;
+  }
+}
+
+/* ----------  Responsive ≤ 768px  ---------- */
+@media (max-width: 768px) {
+  .table-card {
+    padding: 12px;
+    margin: 0.5rem;
+  }
+  
+  .table-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .filter-item .form-control {
+    width: 100%;
+  }
+
+  .fecha-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .fecha-group .form-floating {
+    width: 100%;
+  }
+  
+  .table {
+    font-size: 0.875rem;
+  }
+  
+  .table th,
+  .table td {
+    padding: 8px 4px;
+  }
+
+  /* Fuerza color de iconos nativos */
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(47%) sepia(32%) saturate(1533%) hue-rotate(191deg) brightness(94%) contrast(89%);
+    cursor: pointer;
+  }
+
+  /* Ajustes Angular Material */
+  .form-floating .mat-datepicker-toggle {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    z-index: 2;
+  }
+
+  .form-floating .mat-datepicker-toggle .mat-icon-button {
+    padding: 0;
+    margin: 0;
+    height: 24px;
+    width: 24px;
+  }
+
+  .form-floating .mat-datepicker-toggle .mat-icon {
+    color: var(--color-info);
+    font-size: 1.2rem;
+  }
+
+  /* Calendario */
+  .mat-calendar-header {
+    background: var(--color-primary) !important;
+    color: var(--color-light) !important;
+    font-weight: bold;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .mat-calendar-body-selected {
+    background-color: var(--color-primary) !important;
+    color: var(--color-light) !important;
+    border-radius: 50% !important;
+  }
+
+  .mat-calendar-body-cell:hover:not(.mat-calendar-body-selected) {
+    background-color: var(--color-primary-50) !important;
+    border-radius: 50% !important;
+  }
+
+  .mat-calendar-body-today {
+    border: 2px solid var(--color-primary) !important;
+    border-radius: 50% !important;
+  }
+
+  .mat-calendar-arrow {
+    fill: var(--color-light) !important;
+  }
+
+  .mat-calendar-body-label {
+    color: #666 !important;
+  }
+
+  .mat-datepicker-toggle {
+    color: var(--color-info) !important;
+  }
+
+  ::ng-deep .nav-row {
+    background-color: var(--color-info);
+    color: var(--color-light);
+    padding: 6px 8px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  ::ng-deep .nav-row .today-label {
+    color: var(--color-light);
+    font-weight: 600;
+    font-size: 1.4rem;
+  }
+}
+
+/* ----------  Responsive ≤ 576px  ---------- */
+@media (max-width: 576px) {
+  .table-card {
+    padding: 8px;
+    margin: 0.25rem;
+  }
+  
+  .card-title h4 {
+    font-size: 1rem;
+  }
+  
+  .table {
+    font-size: 0.8rem;
+  }
+  
+  .table th,
+  .table td {
+    padding: 6px 2px;
+  }
+  
+  .badge {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+  }
+  
+  .action-icon {
+    font-size: 1.1rem;
+  }
+}
+
+/* ----------  Responsive ≤ 480px  ---------- */
+@media (max-width: 480px) {
+  .table-card {
+    padding: 6px;
+    border-radius: 8px;
+  }
+  
+  .card-title {
+    padding: 8px;
+  }
+  
+  .card-title h4 {
+    font-size: 0.9rem;
+  }
+  
+  .filters {
+    gap: 8px;
+  }
+  
+  .form-floating.custom-floating input.form-control,
+  .form-floating.custom-floating input[matInput] {
+    font-size: 14px;
+  }
+  
+  .form-floating.custom-floating label {
+    font-size: 0.75rem;
+  }
+}
+
+/* ----------  Table responsive behavior  ---------- */
+@media (max-width: 768px) {
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .table {
+    min-width: 700px;
+  }
+}
+
+@media (max-width: 480px) {
+  .table {
+    min-width: 600px;
+  }
+}
+
+/* ----------  Touch-friendly improvements  ---------- */
+@media (hover: none) and (pointer: coarse) {
+  .filter-item .form-control,
+  .filter-item .form-select {
+    min-height: 48px;
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+  
+  .action-icon {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mat-datepicker-toggle .mat-icon-button {
+    min-height: 48px;
+    min-width: 48px;
+  }
+}
+
+/* ----------  Landscape orientation  ---------- */
+@media (max-width: 768px) and (orientation: landscape) {
+  .table-card {
+    padding: 10px;
+  }
+  
+  .filters {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .filter-item {
+    flex: 1;
+    min-width: 150px;
+  }
+}
+
+/* Estado visual para acciones deshabilitadas */
+.disabled-action {
+  opacity: 0.45;
+  pointer-events: none;
+  cursor: default !important;
+}

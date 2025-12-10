@@ -1,0 +1,13 @@
+<div class="success-modal-overlay" (click)="onClose()">
+    <div class="success-modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-logo">
+            <img [src]="data.logoSrc || 'assets/logoCoomeva.png'" alt="logo" class="success-logo" />
+        </div>
+        <div class="success-modal-body">
+            <div class="success-icon">✔</div>
+            <h3>{{ data.title || 'Registro exitoso' }}</h3>
+            <p>{{ data.message || 'Su información se ha registrado de manera correcta' }}</p>
+            <button class="btn-continue" (click)="onClose()">CONTINUAR</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+<div class="page-container">
+  <div class="left-side">
+    <img
+      src="/assets/logoOvertimeWhite.png"
+      alt=""
+      class="logo-overtime"
+    />
+
+    <div class="images-left">
+      <img
+        src="/assets/logoCoomeva.png"
+        alt="Coomeva"
+        class="logo-coomeva"
+      />
+      <img
+        src="/assets/superSalud.png"
+        alt="SuperSalud"
+        class="logo-supersalud"
+      />
+    </div>
+  </div>
+  <div class="user_password user_password-margin">
+    <div class="login-container">
+      <div class="login-box">
+        <div class="greeting-login">
+          <h2 class="login-title">
+            <span class="hola">¡Hola!</span> <br />
+            <span class="bienvenida">Bienvenido a Overtime MP</span>
+          </h2>
+        </div>
+
+        <p class="subtitulo">Ingresa a tu espacio de trabajo</p>
+
+        <form [formGroup]="form" (ngSubmit)="ingresar()">
+          <div class="input-group">
+            <span class="icon">
+              <i class="bi bi-person"></i>
+            </span>
+            <input
+              formControlName="username"
+              type="text"
+              class="form-control"
+              placeholder="Usuario"
+            />
+          </div>
+          <div class="text-error" *ngIf="form.get('username')?.touched && form.get('username')?.invalid">
+            Usuario es requerido
+          </div>
+
+          <div class="input-group">
+            <span class="icon">
+              <i class="bi bi-lock"></i>
+            </span>
+            <input
+              formControlName="password"
+              type="password"
+              class="form-control"
+              placeholder="Contraseña"
+            />
+          </div>
+          <div class="text-error" *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
+            Contraseña es requerida
+          </div>
+
+          <div class="server-error" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+          <button [disabled]="loading" type="submit" class="button_login btn btn-primary">
+            {{ loading ? 'Ingresando...' : 'Ingresar' }}
+          </button>
+        </form>
+       
+      </div>
+
+      <div class="logo-bottom">
+        <img src="assets/culturaCoomeva.png" alt="" />
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,126 @@
+.custom-timepicker {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 280px;
+  background: var(--color-light);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 200;
+  font-family: system-ui, sans-serif;
+}
+
+.custom-timepicker.open-left {
+  left: auto;
+  right: 0;
+}
+
+.timepicker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-light);
+  background: var(--color-primary);
+  padding: 10px 12px;
+  border-radius: 8px 8px 4px 4px;
+  margin-bottom: 10px;
+}
+
+.time-display {
+  display: flex;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.timepicker-header span {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.timepicker-header span.active {
+  opacity: 1;
+}
+
+.timepicker-clock {
+  position: relative;
+  position: relative;
+  width: 260px;
+  height: 260px;
+  margin: 0 auto;
+}
+
+.clock-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--color-primary-50);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.clock-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 32px;
+  height: 32px;
+  margin: -16px;
+  text-align: center;
+  line-height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--color-dark);
+  font-weight: 500;
+  transition: transform 0.18s ease, opacity 0.18s ease, background 0.12s ease;
+}
+
+.clock-number:hover {
+  background: var(--color-primary-50);
+}
+
+.clock-number.selected {
+  background-color: var(--color-primary);
+  color: var(--color-light);
+}
+
+.clock-hand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 90px;
+  background: var(--color-primary);
+  transform-origin: bottom center;
+  transform: rotate(0deg);
+  border-radius: 1px;
+  transition: transform 0.18s cubic-bezier(.2,.9,.3,1), height 0.18s ease;
+}
+
+.minute-number {
+  font-size: 12px;
+  font-size: 12px;
+  width: 28px;
+  height: 28px;
+  margin: -14px;
+  line-height: 28px;
+}
+
+.hour-number {
+  font-size: 14px;
+}
+
+.timepicker-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+timepicker-footer button {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-weight: 600;
+  cursor: pointer;
+}

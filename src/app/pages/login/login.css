@@ -1,0 +1,317 @@
+/* Estilos movidos de login.html */
+.logo-overtime {
+  width: 50%;
+  height: auto;
+}
+
+.logo-coomeva {
+  width: 45%;
+  height: auto;
+}
+
+.logo-supersalud {
+  width: 45%;
+  height: auto;
+}
+
+.user_password-margin {
+  margin-top: 150px;
+}
+.page-container {
+  display: flex;
+  height: 100vh;
+}
+
+.user_password {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.logo-bottom {
+  margin-top: auto;
+}
+.logo-bottom img {
+  width: 100px;
+  height: auto;
+}
+.left-side {
+  flex: 1;
+  background: linear-gradient(180deg, #3498db 0%, #174ea6 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Círculos decorativos */
+.left-side::before, .left-side::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.15);
+}
+.left-side::before {
+  width: 350px;
+  height: 300px;
+  left: -120px;
+  bottom: -60px;
+}
+.left-side::after {
+  width: 220px;
+  height: 300px;
+  left: 30px;
+  bottom: -80px;
+}
+
+.images-left {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex; /* logos en fila */
+  gap: 20px; /* espacio entre logos */
+  justify-content: center; /* centra el grupo */
+  align-items: center;
+}
+
+.login-box {
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+}
+
+.login-title {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.login-title .hola {
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-semibold);
+}
+
+.login-title .bienvenida {
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-semibold);
+}
+
+.subtitulo {
+  text-align: left;
+  color: var(--color-dark);
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e0e0e0;
+  border-radius: 30px;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  background: #fff;
+}
+.input-group .icon {
+  margin-right: 10px;
+  color: #bbb;
+  font-size: 1.1rem;
+}
+
+.input-group .form-control {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: var(--fs-body);
+  background: transparent;
+}
+
+
+
+.button_login {
+  width: 100%;
+  border-radius: 30px;
+  padding: 12px;
+  font-size: var(--fs-body);
+  margin-bottom: 15px;
+}
+
+.olvide {
+  color: gray;
+  font-size: var(--fs-small);
+}
+
+.input-group .icon img {
+  width: 20px;
+  height: 20px;
+  display: block;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.6;
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .left-side {
+    flex: 0.8;
+  }
+  
+  .user_password {
+    flex: 1.2;
+    padding: 30px;
+  }
+  
+  .login-box {
+    max-width: 400px;
+  }
+}
+
+/* Tablets pequeñas */
+@media (max-width: 768px) {
+  .page-container {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .left-side {
+    display: none;
+  }
+
+  .user_password {
+    width: 100%;
+    margin-top: 0 !important;
+    padding: 2rem;
+    min-height: 100vh;
+    justify-content: center;
+  }
+
+  .login-box {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .login-container {
+    padding: 1rem 0;
+  }
+
+  .logo-bottom img {
+    width: 80px;
+  }
+  
+  .input-group {
+    margin-bottom: 1.25rem;
+  }
+  
+  .button_login {
+    padding: 14px;
+    font-size: 1rem;
+  }
+}
+
+/* Móviles */
+@media (max-width: 480px) {
+  .user_password {
+    padding: 1.5rem;
+  }
+  
+  .login-title .hola,
+  .login-title .bienvenida {
+    font-size: 1.4rem;
+  }
+
+  .logo-bottom img {
+    width: 70px;
+  }
+  
+  .input-group {
+    padding: 12px 15px;
+    margin-bottom: 1rem;
+  }
+  
+  .input-group .form-control {
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+  
+  .button_login {
+    padding: 16px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .subtitulo {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Móviles muy pequeños */
+@media (max-width: 360px) {
+  .user_password {
+    padding: 1rem;
+  }
+  
+  .login-title .hola,
+  .login-title .bienvenida {
+    font-size: 1.2rem;
+  }
+  
+  .logo-bottom img {
+    width: 60px;
+  }
+  
+  .input-group {
+    padding: 10px 12px;
+  }
+}
+
+/* Landscape orientation for mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .user_password {
+    min-height: auto;
+    padding: 1rem;
+  }
+  
+  .login-container {
+    padding: 0.5rem 0;
+  }
+  
+  .logo-bottom {
+    margin-top: 1rem;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .logo-overtime,
+  .logo-coomeva,
+  .logo-supersalud {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  .input-group {
+    min-height: 48px;
+  }
+  
+  .button_login {
+    min-height: 48px;
+    touch-action: manipulation;
+  }
+  
+  .input-group .form-control {
+    min-height: 44px;
+  }
+}

@@ -1,0 +1,54 @@
+export interface IEstado {
+  estadoid?: number;
+  tiempoRegistradoid?: number;
+  cantidadHoras: number;
+  fechaInicio: Date;
+  fechaFin: Date;
+  horaInicio: string;
+  horaFin: string;
+  estadoJefe: string;
+  estadoGh: string;
+  estadoPago: string;
+  nombreColaborador?: string;
+  proceso?: string;
+  motivoRechazoJefe?: string;
+  motivoRechazoGh?: string;
+  tipoHora?: string;
+  regionalNombre?: string;
+  
+  // Campos adicionales para el modal
+  documento?: number;
+  identificacion?: string;
+  cedula?: string;
+  regional?: string;
+  regionalnombre?: string;
+  regionalid?: number;
+  regionalId?: number;
+  jefe?: string;
+  jefeNombre?: string;
+  nombrejefe?: string;
+  jefeid?: number;
+  jefeId?: number;
+  procesonombre?: string;
+  procesoNombre?: string;
+  procesoid?: number;
+  procesoId?: number;
+  justificacion?: string;
+  descripcion?: string;
+  observacion?: string;
+  evidencia?: string;
+  gestion?: string;
+  comoEvidencia?: string;
+  gestionid?: number;
+  gestionId?: number;
+  evidenciaId?: number;
+  entregable?: string;
+  entregablePresentado?: string;
+  usuarioAplicativo?: string;
+  usuarioaplicativo?: string;
+  tipoHoraId?: number;
+  tipohoraid?: number;
+  colaboradorid?: string;
+  colaboradorId?: string;
+  idColaborador?: string;
+}

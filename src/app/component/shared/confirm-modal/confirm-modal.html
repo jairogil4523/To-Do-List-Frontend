@@ -1,0 +1,20 @@
+<div class="confirm-modal-overlay" (click)="onCancel()">
+  <div class="confirm-modal-content" (click)="$event.stopPropagation()">
+    <div class="confirm-modal-icon" aria-hidden="true">
+      <!-- <div class="icon-circle">
+         Exclamation SVG icon (white) centered on primary color circle
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M11 7h2v6h-2z" fill="#FFFFFF"></path>
+          <path d="M11 15h2v2h-2z" fill="#FFFFFF"></path>
+        </svg>
+      </div> -->
+    </div>
+    <h3 class="confirm-title">{{ data.title || '¿Está seguro?' }}</h3>
+    <p class="confirm-message">{{ data.message || 'Esta acción no se puede deshacer.' }}</p>
+    <div class="confirm-actions">
+      <button class="btnWhite" (click)="onCancel()">{{ data.cancelText || 'CANCELAR' }}</button>
+      <button class="btnBlue" (click)="onConfirm()">{{ data.confirmText || 'ELIMINAR' }}</button>
+    </div>
+  </div>
+</div>
+

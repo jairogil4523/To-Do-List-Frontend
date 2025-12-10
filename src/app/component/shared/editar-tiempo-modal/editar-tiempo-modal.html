@@ -1,0 +1,167 @@
+<form class="inputs-grid margin-top-20">
+    <div class="colaborador-header full-width">
+        <span class="modal-title">Colaborador:</span>
+        <span class="strong-text">{{ colaborador }}</span>
+    </div>
+    <!-- Fila 1: Cédula, Regional, Jefe -->
+    <div class="form-floating custom-floating">
+        <input type="text" class="form-control border-primary" id="cedula" name="cedula"
+            placeholder="Digite el número de cédula" maxlength="10" (input)="onCedulaInput($event)" autocomplete="off"
+            [(ngModel)]="cedula" />
+        <label for="cedula">*Cédula</label>
+    </div>
+    <div class="form-floating custom-floating">
+        <input type="text" class="form-control border-primary" id="regional" name="regional"
+            placeholder="Seleccione la Regional" [(ngModel)]="regional" (focus)="showOptions = true"
+            (input)="filterOptions()" />
+        <label for="regional">*Regional</label>
+        <ul class="custom-options" *ngIf="showOptions">
+            <li *ngFor="let option of filteredOptions" (mousedown)="selectOption(option); $event.stopPropagation()">
+                {{ option }}
+            </li>
+        </ul>
+    </div>
+    <!-- Jefe -->
+    <div class="form-floating custom-floating">
+        <input type="text" class="form-control border-primary" id="jefe" name="jefe"
+            placeholder="Seleccione el Jefe correspondiente" [(ngModel)]="tipoJefe" (focus)="showJefeOptions = true"
+            (input)="filterJefeOptions()" />
+        <label for="jefe">*Jefe</label>
+        <ul class="custom-options" *ngIf="showJefeOptions">
+            <li *ngFor="let jefe of filteredJefes" (mousedown)="selectJefe(jefe); $event.stopPropagation()">
+                {{ jefe }}
+            </li>
+        </ul>
+    </div>
+
+    <!-- Fila 2: Tipo Hora, Fecha Inicio, Hora Inicio, Fecha Fin, Hora Fin -->
+    <div class="form-floating custom-floating">
+        <input type="text" class="form-control border-primary" id="tipoHora" name="tipoHora"
+            placeholder="Seleccione el tipo de hora" [(ngModel)]="tipoHora" (focus)="showHoraOptions = true"
+            (input)="filterHoraOptions()" />
+        <label for="tipoHora">*Tipo de Hora</label>
+        <ul class="custom-options" *ngIf="showHoraOptions">
+            <li *ngFor="let hora of filteredHoras" (mousedown)="selectHora(hora); $event.stopPropagation()">
+                {{ hora }}
+            </li>
+        </ul>
+    </div>
+
+    <div class="fecha-hora-group">
+        <div class="form-floating custom-floating">
+            <input matInput [matDatepicker]="pickerInicio" class="form-control border-primary" id="fechaInicio"
+                name="fechaInicio" placeholder="dd/mm/aaaa" [(ngModel)]="fechaInicio"
+                (click)="openPicker('inicio', pickerInicio)" (focus)="openPicker('inicio', pickerInicio)"
+                [min]="minDate" [max]="maxDate" />
+            <label for="fechaInicio">*Fecha Inicio</label>
+            <mat-datepicker-toggle matSuffix [for]="pickerInicio">
+                <mat-icon>calendar_today</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #pickerInicio [calendarHeaderComponent]="CustomDatepickerHeader"
+                [startAt]="startAt"></mat-datepicker>
+        </div>
+        <div class="form-floating custom-floating">
+            <input type="text" class="form-control border-primary" id="horaInicio" name="horaInicio"
+                placeholder="hh:mm AM/PM" [(ngModel)]="horaInicio" readonly (click)="mostrarRelojInicio = true" />
+            <label for="horaInicio">*Hora Inicio</label>
+            <i class="bi bi-clock clock-icon" (click)="mostrarRelojInicio = true"></i>
+            <app-timepicker *ngIf="mostrarRelojInicio"
+                (timeSelected)="horaInicio = $any($event); mostrarRelojInicio = false"
+                (timePreview)="horaInicio = $any($event)" (closed)="mostrarRelojInicio = false"></app-timepicker>
+        </div>
+    </div>
+
+
+    <div class="fecha-hora-group">
+        <div class="form-floating custom-floating ">
+            <input matInput [matDatepicker]="pickerFin" class="form-control border-primary" id="fechaFin"
+                name="fechaFin" placeholder="dd/mm/aaaa" [(ngModel)]="fechaFin" (click)="openPicker('fin', pickerFin)"
+                (focus)="openPicker('fin', pickerFin)" [min]="minDate" [max]="maxDate" />
+            <label for="fechaFin">*Fecha Fin</label>
+            <mat-datepicker-toggle matSuffix [for]="pickerFin">
+                <mat-icon>calendar_today</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #pickerFin [calendarHeaderComponent]="CustomDatepickerHeader"
+                [startAt]="startAt"></mat-datepicker>
+        </div>
+        <div class="form-floating custom-floating">
+            <input type="text" class="form-control border-primary" id="horaFin" name="horaFin" placeholder="hh:mm AM/PM"
+                [(ngModel)]="horaFin" readonly (click)="mostrarRelojFin = true" />
+            <label for="horaFin">*Hora Fin</label>
+            <i class="bi bi-clock clock-icon" (click)="mostrarRelojFin = true"></i>
+            <app-timepicker *ngIf="mostrarRelojFin" class="open-left"
+                (timeSelected)="horaFin = $any($event); mostrarRelojFin = false" (timePreview)="horaFin = $any($event)"
+                (closed)="mostrarRelojFin = false"></app-timepicker>
+        </div>
+    </div>
+
+    <!-- Campo Proceso debajo de Tipo de Hora -->
+    <div class="proceso-justificacion">
+        <!-- Proceso -->
+        <div class="form-floating custom-floating">
+            <input type="text" class="form-control border-primary" id="texto1a" name="proceso"
+                placeholder="Seleccione el proceso" list="listaProcesos" [(ngModel)]="proceso"
+                (focus)="showProcesoOptions = true" (input)="filterProcesoOptions()" autocomplete="off" />
+            <label for="texto1a">*Proceso</label>
+            <ul class="custom-options" *ngIf="showProcesoOptions">
+                <li *ngFor="let proceso of filteredProcesos"
+                    (mousedown)="selectProceso(proceso); $event.stopPropagation()">
+                    {{ proceso }}
+                </li>
+            </ul>
+        </div>
+
+        <!-- Justificación -->
+        <div class="form-floating custom-floating relative">
+            <input type="text" class="form-control border-primary padding-right-2rem" id="texto1b" name="justificacion"
+                placeholder="Describa detalladamente la actividad realizada" [(ngModel)]="justificacion" />
+            <label for="texto1b">*Justificación</label>
+            <i class="bi bi-exclamation-circle-fill icon-absolute-right"></i>
+        </div>
+    </div>
+
+
+    <div class="row-texto">
+        <div class="form-floating custom-floating">
+            <input type="text" class="form-control border-primary" id="texto2a" name="evidencia"
+                placeholder="Seleccione el tipo de evidencia presentado" [(ngModel)]="evidencia"
+                (focus)="showEvidenciaOptions = true" (input)="filterEvidenciaOptions()" />
+            <label for="texto2a">*¿Cómo se evidencia la gestión realizada?</label>
+            <ul class="custom-options" *ngIf="showEvidenciaOptions">
+                <li *ngFor="let evidenciaItem of filteredEvidencias"
+                    (mousedown)="selectEvidencia(evidenciaItem); $event.stopPropagation()">
+                    {{ evidenciaItem }}
+                </li>
+            </ul>
+        </div>
+        <div class="form-floating custom-floating" *ngIf="evidencia === 'Otro entregable'">
+            <input type="text" class="form-control border-primary" id="texto2b" name="entregable"
+                placeholder="Describa detalladamente cuál fue la evidencia presentada" [(ngModel)]="entregable" />
+            <label for="texto2b">*Mencione el entregable presentado</label>
+        </div>
+
+        <div class="form-floating custom-floating">
+      <input
+        type="text"
+        id="usuarioAplicativo"
+        name="usuarioAplicativo"
+        class="form-control border-primary"
+        [class.input-error]="invalidFields['usuarioAplicativo']"
+        placeholder="Usuario del aplicativo"
+        [(ngModel)]="usuarioAplicativo"
+        (input)="clearFieldError('usuarioAplicativo')"
+        aria-label="Usuario del aplicativo"
+      />
+      <label for="usuarioAplicativo">*Usuario del aplicativo</label>
+    </div>
+
+    </div>
+</form>
+
+<!-- Acciones: Cerrar / Editar -->
+<div class="row-botones">
+    <button class="btn-outline" type="button" (click)="onClose()">CERRAR</button>
+    <button *ngIf="data?.showEdit" class="btn-primary" type="button" (click)="onEdit()" [attr.aria-disabled]="!canEdit"
+        [disabled]="!canEdit"
+        [title]="!canEdit ? 'No puede editarse: Estado Jefe no es Pendiente' : 'Editar'">EDITAR</button>
+</div>

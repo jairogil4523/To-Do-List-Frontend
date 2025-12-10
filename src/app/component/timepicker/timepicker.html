@@ -1,0 +1,48 @@
+<div class="custom-timepicker">
+  <div class="timepicker-header">
+    <span [class.active]="period === 'AM'" (click)="setPeriodAndClose('AM')">AM</span>
+    <div class="time-display">
+      <span class="hour" (click)="mode = 'hour'">{{ hour.toString().padStart(2, '0') }}</span>
+      <span class="separator">:</span>
+      <span class="minute" (click)="mode = 'minute'">{{ minute.toString().padStart(2, '0') }}</span>
+    </div>
+    <span [class.active]="period === 'PM'" (click)="setPeriodAndClose('PM')">PM</span>
+  </div>
+
+  <div class="timepicker-clock">
+    <div class="clock-face">
+      <!-- Horas -->
+      <ng-container *ngIf="mode === 'hour'">
+        <div
+          class="clock-number hour-number"
+          *ngFor="let h of hours"
+          [style.transform]="getHourTransform(h)"
+          (click)="selectHour(h)"
+          [class.selected]="mode === 'hour' && hour === h"
+        >
+          {{ h }}
+        </div>
+      </ng-container>
+
+      <!-- Minutos -->
+      <ng-container *ngIf="mode === 'minute'">
+        <div
+          class="clock-number minute-number"
+          *ngFor="let m of minutes"
+          [style.transform]="getMinuteTransform(m)"
+          (click)="selectMinute(m)"
+          [class.selected]="mode === 'minute' && minute === m"
+        >
+          {{ m.toString().padStart(2, '0') }}
+        </div>
+      </ng-container>
+
+      <!-- Manecilla -->
+      <div
+        class="clock-hand"
+        [style.transform]="getHandTransform()"
+        [style.height.px]="getHandLength()"
+      ></div>
+    </div>
+  </div>
+</div>

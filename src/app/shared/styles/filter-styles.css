@@ -1,0 +1,375 @@
+/* ================================
+   Estilos globales para filtros
+   Aplicando la apariencia de registrar-tiempo a todos los filtros
+================================ */
+
+/* Variables para filtros */
+:root {
+  --filter-border-radius: 10px;
+  --filter-border-width: 2px;
+  --filter-height: 44px;
+  --filter-width: 180px;
+  --filter-padding: 10px 40px 10px 12px;
+  --filter-label-size: 0.85rem;
+}
+
+/* Estilo base para todos los filtros */
+.filters .form-floating.custom-floating {
+  position: relative;
+  margin-bottom: 0;
+}
+
+/* Contenedor de filtros: usar Grid para distribuir y ajustar automáticamente */
+.filters {
+  display: grid;
+  /* auto-fit + minmax para columnas responsivas; 1fr permite ajustar espacio y evitar huecos */
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-auto-flow: dense; /* rellena huecos y evita que elementos pequeños se queden solos */
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Labels flotantes para filtros */
+.filters .form-floating.custom-floating > label {
+  position: absolute;
+  top: 0;
+  left: 0.75rem;
+  transform: translateY(-50%);
+  font-size: var(--filter-label-size);
+  background: var(--color-light);
+  margin-bottom: auto;
+  padding: 0 4px;
+  color: var(--color-info);
+  pointer-events: none;
+  height: auto;
+  white-space: nowrap;
+}
+
+/* Inputs de texto y selects en filtros */
+.filters .form-floating.custom-floating .form-control,
+.filters .form-floating.custom-floating .form-select,
+.filters .form-floating.custom-floating input[matInput] {
+  border: var(--filter-border-width) solid var(--color-info);
+  border-radius: var(--filter-border-radius);
+  padding: var(--filter-padding);
+  height: var(--filter-height);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--filter-width);
+  min-width: 120px;
+}
+
+/* Clase específica para border-info */
+.border-info {
+  border-color: var(--color-info) !important;
+}
+
+/* Estados de focus para filtros */
+.filters .form-floating.custom-floating .form-control:focus,
+.filters .form-floating.custom-floating .form-select:focus,
+.filters .form-floating.custom-floating input[matInput]:focus {
+  border-color: var(--color-info);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(13, 202, 240, 0.08);
+}
+
+/* Placeholder para inputs de filtros */
+.filters .form-floating.custom-floating input::placeholder {
+  opacity: 0.6;
+  color: #999;
+}
+
+/* Datepicker toggle en filtros */
+.filters .form-floating.custom-floating .mat-datepicker-toggle {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+/* Asegurar que los inputs de fecha tengan el tamaño correcto */
+.filters .fecha-group .form-floating.custom-floating .form-control,
+.filters .fecha-group .form-floating.custom-floating input[matInput] {
+  width: 100% !important;
+  max-width: var(--filter-width) !important;
+  padding-right: 40px !important;
+}
+
+.filters .form-floating.custom-floating .mat-datepicker-toggle .mat-icon-button {
+  padding: 0;
+  margin: 0;
+  height: 24px;
+  width: 24px;
+}
+
+.filters .form-floating.custom-floating .mat-datepicker-toggle .mat-icon {
+  color: var(--color-info);
+  font-size: 1.2rem;
+}
+
+/* Iconos de calendario */
+.filters .form-floating.custom-floating .mat-datepicker-toggle .mat-icon,
+.filters .form-floating.custom-floating ::ng-deep .mat-datepicker-toggle .mat-icon {
+  color: var(--color-info) !important;
+  fill: var(--color-info) !important;
+}
+
+/* Botones en filtros */
+.filters .btn {
+  height: var(--filter-height);
+  min-width: 100px;
+  padding: 0 20px;
+  border-radius: 50px;
+  border-width: 2px;
+  align-self: flex-start;
+}
+
+/* Evitar que el botón quede en una fila separada: alinearlo y prevenir quiebre de texto */
+.filters .btn {
+  justify-self: start;
+  grid-column: auto;
+  white-space: nowrap;
+}
+
+/* Grupo de fechas */
+.filters .fecha-group {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.filters .fecha-group .form-floating {
+  width: 100%;
+  max-width: var(--filter-width);
+}
+
+/* Autocomplete en filtros */
+.filters .form-floating.custom-floating .mat-autocomplete-panel {
+  border-radius: var(--filter-border-radius);
+  border: var(--filter-border-width) solid var(--color-info);
+}
+
+/* Opciones personalizadas (dropdowns) */
+.filters .custom-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-light);
+  border: var(--filter-border-width) solid var(--color-info);
+  border-radius: var(--filter-border-radius);
+  max-height: 180px;
+  overflow-y: auto;
+  margin-top: 4px;
+  padding: 0;
+  z-index: 20;
+}
+
+.filters .custom-options li {
+  list-style: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.filters .custom-options li:hover {
+  background: var(--color-primary-50);
+}
+
+/* Forzar posición del icono dentro del input para todos los filtros de fecha */
+.filters .form-floating.custom-floating .mat-datepicker-toggle,
+.filters .fecha-group .form-floating.custom-floating .mat-datepicker-toggle {
+  position: absolute !important;
+  top: 50% !important;
+  right: 12px !important;
+  transform: translateY(-50%) !important;
+  z-index: 3 !important;
+  pointer-events: auto !important;
+}
+
+/* Forzar tamaño uniforme para todos los filtros de fecha */
+.filters .fecha-group .form-floating.custom-floating {
+  width: 100% !important;
+  max-width: var(--filter-width) !important;
+}
+
+.filters .fecha-group .form-floating.custom-floating .form-control,
+.filters .fecha-group .form-floating.custom-floating input[matInput] {
+  width: 100% !important;
+  max-width: var(--filter-width) !important;
+  height: var(--filter-height) !important;
+  padding: var(--filter-padding) !important;
+  border: var(--filter-border-width) solid var(--color-info) !important;
+  border-radius: var(--filter-border-radius) !important;
+}
+
+/* Responsive para filtros */
+@media (max-width: 1024px) {
+  .filters {
+    flex-wrap: wrap;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .filters .form-floating.custom-floating .form-control,
+  .filters .form-floating.custom-floating .form-select,
+  .filters .form-floating.custom-floating input[matInput] {
+    width: 200px;
+    min-width: 200px;
+    max-width: 100%;
+  }
+
+  .filters .fecha-group .form-floating {
+    width: 200px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .filters .form-floating.custom-floating .form-control,
+  .filters .form-floating.custom-floating .form-select,
+  .filters .form-floating.custom-floating input[matInput] {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .filters .fecha-group {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .filters .fecha-group .form-floating {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .filters .fecha-group .form-floating.custom-floating {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .filters .fecha-group .form-floating.custom-floating .form-control,
+  .filters .fecha-group .form-floating.custom-floating input[matInput] {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .filters .btn {
+    width: 100%;
+    margin-top: 8px;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 576px) {
+  .filters .form-floating.custom-floating .form-control,
+  .filters .form-floating.custom-floating .form-select,
+  .filters .form-floating.custom-floating input[matInput] {
+    padding: 10px 12px;
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+
+  .filters .form-floating.custom-floating > label {
+    font-size: 0.8rem;
+  }
+}
+
+/* Estados de error para filtros */
+.filters .form-floating.custom-floating .input-error {
+  border-color: #a94442 !important;
+  box-shadow: 0 0 0 3px rgba(169, 68, 66, 0.06) !important;
+  background: #fff6f6 !important;
+}
+
+/* Mejoras para accesibilidad */
+@media (hover: none) and (pointer: coarse) {
+  .filters .form-floating.custom-floating .form-control,
+  .filters .form-floating.custom-floating .form-select,
+  .filters .form-floating.custom-floating input[matInput] {
+    min-height: 48px;
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+  
+  .filters .btn {
+    min-height: 48px;
+    touch-action: manipulation;
+  }
+  
+  .filters .mat-datepicker-toggle .mat-icon-button {
+    min-height: 48px;
+    min-width: 48px;
+  }
+}
+
+/* Estilos específicos para Angular Material */
+.filters ::ng-deep .mat-mdc-icon-button {
+  color: var(--color-info) !important;
+}
+
+.filters ::ng-deep .mat-datepicker-toggle .mat-icon {
+  color: var(--color-info) !important;
+}
+
+/* Calendario personalizado */
+.filters ::ng-deep .mat-calendar-header {
+  background-color: var(--color-info) !important;
+  color: var(--color-light) !important;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px 8px 0 0;
+}
+
+.filters ::ng-deep .mat-calendar-body-selected {
+  background-color: var(--color-info) !important;
+  color: var(--color-light) !important;
+  border-radius: 50% !important;
+}
+
+.filters ::ng-deep .mat-calendar-body-cell:hover:not(.mat-calendar-body-selected) {
+  background-color: rgba(13, 202, 240, 0.08) !important;
+  border-radius: 50% !important;
+}
+
+.filters ::ng-deep .mat-calendar-body-today {
+  border: 2px solid var(--color-info) !important;
+  border-radius: 50% !important;
+}
+
+.filters ::ng-deep .mat-calendar-arrow {
+  fill: var(--color-light) !important;
+}
+
+.filters ::ng-deep .nav-row {
+  background-color: var(--color-info);
+  color: var(--color-light);
+  padding: 6px 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filters ::ng-deep .nav-row .today-label {
+  color: var(--color-light);
+  font-weight: 600;
+  font-size: 1.4rem;
+}

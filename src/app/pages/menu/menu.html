@@ -1,0 +1,135 @@
+<div class="menu-flex">
+  <!-- Overlay para cerrar sidebar en móvil -->
+  <div class="sidebar-overlay" [class.active]="sidebarActive" (click)="closeSidebar()"></div>
+
+  <div id="sidebar" [class.active]="sidebarActive" class="sidebar bg-primary">
+    <div class="sidebar-body">
+      <div class="sidebar-header">
+        <div class="sidebar-logo-container">
+          <img class="image-sidebar" src="assets/logoOvertimeWhite.png" alt="Logo" />
+        </div>
+        <button type="button" class="btn-close-sidebar" (click)="closeSidebar()">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <div>
+        <!-- Rol ovtcolaboradormp -->
+        <ul *ngIf="isovtcolaboradormp" class="list-group list-group-custom">
+          <li>
+            <a routerLink="registrarTiempo" class="menu-item" (click)="closeSidebar()">
+              <i class="bi bi-pencil-square icon-tiempo fs-5"></i>
+              <span>Registrar Tiempo</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="tiemposRegistrados" class="menu-item" (click)="closeSidebar()">
+              <i class="bi bi-file-text icon-tiempo fs-5"></i>
+              <span>Tiempo Registrado</span>
+            </a>
+          </li>
+        </ul>
+        <!-- Rol ovtjefemp -->
+        <ul *ngIf="isovtjefemp" class="list-group list-group-custom">
+          <li>
+            <a routerLink="solicitudPendiente" class="menu-item" (click)="closeSidebar()">
+              <i class="bi bi-pencil-square icon-tiempo fs-5"></i>
+              <span>Solicitudes Pendientes</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="solicitudProcesadas" class="menu-item" (click)="closeSidebar()">
+              <i class="bi bi-file-text icon-tiempo fs-5"></i>
+              <span>Solicitudes Procesadas</span>
+            </a>
+          </li>
+        </ul>
+        <!-- Rol ovtghmp -->
+        <ul *ngIf="isovtghmp" class="list-group list-group-custom">
+
+          <li>
+            <a routerLink="solicitudPendienteGh" class="menu-item" (click)="closeSidebar()">
+              <i class="bi bi-pencil-square icon-tiempo fs-5"></i>
+              <span>Solicitudes Pendientes Gh</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="devolverSolicitudes" class="menu-item" (click)="closeSidebar()">
+              <i class="bi bi-backspace icon-tiempo fs-5"></i>
+              <span>Devolver Solicitudes</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="tablero" class="menu-item" (click)="closeSidebar()">
+              <i class="bi bi-bar-chart-line icon-tiempo fs-5"></i>
+              <span>Tablero BI</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="reportes" class="menu-item" (click)="closeSidebar()">
+              <i class="bi bi-save icon-tiempo fs-5"></i>
+              <span>Reportes</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="solicitudPendienteGhNacional" class="menu-item" (click)="closeSidebar()">
+              <i class="bi bi-pencil-square icon-tiempo fs-5"></i>
+              <span>Solicitudes Pendientes Gh Nacional</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="devolverSolicitudesNacional" class="menu-item" (click)="closeSidebar()">
+              <i class="bi bi-backspace icon-tiempo fs-5"></i>
+              <span>Devolver Solicitudes Nacional</span>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+      <div>
+        <div class="img-container">
+          <img src="/assets/logoCoomeva.png" alt="Coomeva" class="footer-coomeva" />
+        </div>
+        <img src="/assets/superSalud.png" alt="SuperSalud" class="footer-supersalud" />
+      </div>
+    </div>
+
+  </div>
+
+
+  <div [class.shift-right]="sidebarActive" class="menu-content-wrapper">
+    <nav class="navbar navbar-expand-lg bg-light shadow-sm">
+      <!-- Botón hamburguesa -->
+      <button type="button" class="btn-hamburger" [class.active]="sidebarActive" (click)="toggleSidebar()">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <div class="container-fluid d-flex align-items-center justify-content-end navbar-padding">
+        <ul class="navbar-nav align-items-center">
+          <li ngbDropdown class="nav-item">
+            <a class="nav-link d-flex align-items-center" ngbDropdownToggle>
+              <!-- <i class="bi bi-bell-fill me-2"></i> -->
+              <!-- <img src="https://i.pravatar.cc/30" alt="Avatar" class="rounded-circle avatar" /> -->
+              <i class="bi bi-person-circle"></i>
+            </a>
+            <ul ngbDropdownMenu class="dropdown-menu-end">
+              <li><a class="dropdown-item">{{ name || 'Nombre' }}</a></li>
+              <!-- <li><a class="dropdown-item dropdown-item-margin">{{ roles || 'Rol' }}</a></li> -->
+              <li><a class="dropdown-item dropdown-item-margin" href="#" (click)="logout()">Cerrar sesión</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="menu-main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</div>

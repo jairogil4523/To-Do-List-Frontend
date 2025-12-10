@@ -1,0 +1,166 @@
+<!-- solicitud-pendiente-gh.component.html – refactor 2025-06 -->
+<div class="card-title card">
+  <h4>
+    <span class="text-primary">Overtime MP</span>
+    <span class="text-secondary"> / Devolver Solicitudes</span>
+  </h4>
+</div>
+
+<div class="card table-card mt-3">
+  <div class="table-header">
+    <div class="filters">
+      <!-- Filtro Colaborador -->
+      <div class="filter-item search-item">
+        <div class="form-floating custom-floating">
+          <select class="form-select border-info" id="filtroColaborador" [(ngModel)]="filtroColaborador"
+            (change)="onFilterChange()">
+            <option value="">Todos los colaboradores</option>
+            <option *ngFor="let opt of colaboradores" [value]="opt">{{ opt }}</option>
+          </select>
+          <label for="filtroColaborador">Colaborador</label>
+        </div>
+      </div>
+
+      <!-- Filtro Jefe Inmediato -->
+      <div class="filter-item search-item">
+        <div class="form-floating custom-floating">
+          <select class="form-select border-info" id="filtroJefeInmediato" [(ngModel)]="filtroJefeInmediato"
+            (change)="onFilterChange()">
+            <option value="">Todos los jefes</option>
+            <option *ngFor="let opt of jefesInmediatos" [value]="opt">{{ opt }}</option>
+          </select>
+          <label for="filtroJefeInmediato">Jefe Inmediato</label>
+        </div>
+      </div>
+
+      <!-- Estado Jefe -->
+      <div class="filter-item search-item">
+        <div class="form-floating custom-floating">
+          <select class="form-select border-info" id="estadoJefe" [(ngModel)]="estadoJefeFilter"
+            (change)="onFilterChange()">
+            <option value="">Estado Jefe</option>
+            <option value="Pendiente">Pendiente</option>
+            <option value="Aprobado">Aprobado</option>
+            <option value="Rechazado">Rechazado</option>
+          </select>
+          <label for="estadoJefe">Estado Jefe</label>
+        </div>
+      </div>
+
+      <!-- Estado GH -->
+      <div class="filter-item search-item">
+        <div class="form-floating custom-floating">
+          <select class="form-select border-info" id="estadoGh" [(ngModel)]="estadoGhFilter"
+            (change)="onFilterChange()">
+            <option value="">Estado GH</option>
+            <option value="Pendiente">Pendiente</option>
+            <option value="Aprobado">Aprobado</option>
+            <option value="Rechazado">Rechazado</option>
+          </select>
+          <label for="estadoGh">Estado GH</label>
+        </div>
+      </div>
+
+      <!-- Estado Pago -->
+      <div class="filter-item search-item">
+        <div class="form-floating custom-floating">
+          <select class="form-select border-info" id="estadoPago" [(ngModel)]="estadoPagoFilter"
+            (change)="onFilterChange()">
+            <option value="">Estado Pago</option>
+            <option value="Pendiente">Pendiente</option>
+            <option value="Aprobado">Aprobado</option>
+            <option value="Rechazado">Rechazado</option>
+          </select>
+          <label for="estadoPago">Estado Pago</label>
+        </div>
+      </div>
+      <!--filtro de fecha-->
+      <div class="fecha-group">
+        <div class="filter-item">
+          <div class="form-floating custom-floating">
+            <input matInput [matDatepicker]="pickerInicio" class="form-control border-info" id="fechaInicio"
+              name="fechaInicio" placeholder="dd/mm/aaaa" [(ngModel)]="fechaInicio" (ngModelChange)="onFechaChange()"
+              (click)="openPicker('inicio', pickerInicio)" (focus)="openPicker('inicio', pickerInicio)" [min]="minDate"
+              [max]="maxDate" aria-label="Fecha inicio" />
+            <label for="fechaInicio">*Fecha Inicio</label>
+            <mat-datepicker-toggle matSuffix [for]="pickerInicio" (click)="openPicker('inicio', pickerInicio)">
+              <mat-icon (click)="openPicker('inicio', pickerInicio)">calendar_today</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #pickerInicio [calendarHeaderComponent]="CustomDatepickerHeader"
+              [startAt]="startAt"></mat-datepicker>
+          </div>
+        </div>
+        <div class="filter-item">
+          <div class="form-floating custom-floating">
+            <input matInput [matDatepicker]="pickerFin" class="form-control border-info" id="fechaFin"
+              name="fechaFin" placeholder="dd/mm/aaaa" [(ngModel)]="fechaFin" (ngModelChange)="onFechaChange()"
+              (click)="openPicker('fin', pickerFin)" (focus)="openPicker('fin', pickerFin)" [min]="minDate"
+              [max]="maxDate" aria-label="Fecha fin" />
+            <label for="fechaFin">*Fecha Fin</label>
+            <mat-datepicker-toggle matSuffix [for]="pickerFin" (click)="openPicker('fin', pickerFin)">
+              <mat-icon (click)="openPicker('fin', pickerFin)">calendar_today</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #pickerFin [calendarHeaderComponent]="CustomDatepickerHeader"
+              [startAt]="startAt"></mat-datepicker>
+          </div>
+        </div>
+      </div>
+      <!-- Botón Limpiar Filtros -->
+          <button type="button" class="btn btn-primary" (click)="limpiarFiltros()">Limpiar</button>
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <div class="loading-container" *ngIf="isLoading">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+
+  <!-- Tabla -->
+  <table mat-table [dataSource]="dataSource" class="table mat-elevation-z0" *ngIf="!isLoading">
+    <!-- Columnas dinámicas -->
+    <ng-container *ngFor="let col of columnDefs" [matColumnDef]="col.def">
+      <th mat-header-cell *matHeaderCellDef>{{ col.header }}</th>
+      <td mat-cell *matCellDef="let element">
+        <!-- Badge para estados -->
+        <span *ngIf="col.badge" class="badge" [ngClass]="{
+                'badge-warning': element[col.def] === 'Pendiente',
+                'badge-success': element[col.def] === 'Aprobado',
+                'badge-danger': element[col.def] === 'Rechazado'
+              }">
+          {{ element[col.def] }}
+        </span>
+
+        <!-- Fechas formateadas -->
+        <span *ngIf="col.pipe">{{ element[col.def] | date: col.pipe }}</span>
+
+        <!-- Texto normal -->
+        <span *ngIf="!col.badge && !col.pipe">{{ element[col.def] }}</span>
+      </td>
+    </ng-container>
+
+    <!-- Acciones -->
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let el" class="acciones-cell">
+        <i class="bi bi-backspace action-icon" [class.disabled-action]="isPendiente(el)" title="Devolver Jefe"
+          role="button" (click)="openConfirmApprove(el)"></i>
+        <i class="bi bi-backspace action-icon text-danger" [class.disabled-action]="isPendienteGh(el)" title="Devolver Gh"
+          role="button" (click)="openConfirmApprove1(el)"></i>
+        <i class="bi bi-coin action-icon" [class.disabled-action]="isPendientePago(el)" title="Devolver Pago"
+          role="button" (click)="openConfirmApprove2(el)"></i>
+        <i class="bi bi-eye action-icon" title="Ver" role="button" (click)="openVer(el)"></i>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- Paginador -->
+  <div class="table-footer">
+    <mat-paginator [length]="resultsLength" [pageSizeOptions]="[10, 30, 50]" aria-label="Paginador"></mat-paginator>
+  </div>
+</div>
+
+<!-- Referencia para Angular Language Service (no se renderiza) -->
+<custom-datepicker-header *ngIf="false"></custom-datepicker-header>

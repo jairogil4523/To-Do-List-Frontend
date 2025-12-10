@@ -1,0 +1,16 @@
+<div class="confirm-modal-overlay" (click)="onCancel()">
+  <div class="confirm-modal-content" (click)="$event.stopPropagation()">
+    <h3 class="confirm-title">{{ data.title || '¿Está seguro que desea RECHAZAR el registro?' }}</h3>
+    <div class="reject-body">
+      <label class="reject-label">{{ data.placeholder || 'Mencione el motivo del rechazo' }}</label>
+      <textarea #reasonArea class="reject-textarea" [(ngModel)]="reason" rows="6" aria-label="Motivo rechazo"></textarea>
+      <div class="validation-message" *ngIf="submitted && (!reason || reason.trim().length === 0)">
+        El motivo es obligatorio.
+      </div>
+    </div>
+    <div class="confirm-actions">
+      <button class="btnWhite" (click)="onCancel()">{{ data.cancelText || 'CANCELAR' }}</button>
+      <button class="btnBlue" (click)="onReject()" [disabled]="!reason || reason.trim().length === 0">{{ data.confirmText || 'RECHAZAR' }}</button>
+    </div>
+  </div>
+</div>

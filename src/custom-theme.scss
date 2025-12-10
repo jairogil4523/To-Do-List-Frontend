@@ -1,0 +1,31 @@
+@use '@angular/material' as mat;
+
+html {
+  @include mat.theme((
+    color: (
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
+
+body {
+  // Configurar por defecto la aplicación en tema claro. Esto puede cambiarse a
+  // `dark` para habilitar el tema oscuro, o a `light dark` para respetar la
+  // preferencia del sistema del usuario.
+  color-scheme: light;
+
+  // Set a default background, font and text colors for the application using
+  // Establecer un fondo por defecto, fuente y colores de texto usando
+  // las variables CSS de sistema de Angular Material. Aprende más sobre estas
+  // variables en https://material.angular.dev/guide/system-variables
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+
+  // Reset the user agent margin.
+  // Resetear el margen del agente de usuario.
+  margin: 0;
+}

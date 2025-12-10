@@ -1,0 +1,503 @@
+:host {
+  --sidebar-width: 250px;
+  --sidebar-width-sm: 200px;
+  --transition: 0.3s ease;
+}
+
+/* Layout base */
+.menu-flex {
+  display: flex;
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Overlay para cerrar sidebar */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition), visibility var(--transition);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.sidebar-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  padding: 1rem;
+  overflow-y: auto;
+  overflow-x: visible;
+  transition: transform var(--transition), width var(--transition);
+  z-index: 1000;
+  background-color: #fff;
+  transform: translateX(-100%);
+  box-shadow: 2px 0 15px rgba(0,0,0,0.1);
+}
+
+.sidebar-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sidebar.collapsed {
+  transform: translateX(-100%);
+}
+
+/* Header del sidebar */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.sidebar-logo-container {
+  text-align: center;
+  flex: 1;
+}
+
+.btn-close-sidebar {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.btn-close-sidebar:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.image-sidebar {
+  max-width: 120px;
+  height: auto;
+}
+
+/* Menú */
+.list-group-custom {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #f9f6f6;
+  text-decoration: none;
+  font-weight: 500;
+  /*padding: 0.5rem 0;*/
+}
+
+.menu-item:hover {
+  cursor: pointer;
+}
+
+/* Iconos */
+.icon-register {
+  width: 70px;
+  height: auto;
+}
+
+.icon-tiempo {
+  margin: 25px 0 25px 30px;
+}
+
+/* Contenido principal */
+.menu-content-wrapper {
+  margin-left: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left var(--transition);
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.menu-main-content {
+  flex: 1;
+  background-color: #dfe4f2;
+  padding: 1rem;
+  min-height: calc(100vh - 60px);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* Navbar */
+.navbar {
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  min-height: unset;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.navbar-padding {
+  padding: 10px;
+  max-width: 100%;
+  overflow: visible;
+}
+
+/* Botón hamburguesa */
+.btn-hamburger {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 40px;
+  height: 40px;
+  margin-right: 1rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+.btn-hamburger:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+.hamburger-line {
+  width: 25px;
+  height: 3px;
+  background-color: #007bff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 2px;
+  transform-origin: center;
+}
+
+.btn-hamburger:hover .hamburger-line {
+  background-color: #0056b3;
+}
+
+/* Animación cuando el sidebar está activo */
+.btn-hamburger.active .hamburger-line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.btn-hamburger.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.btn-hamburger.active .hamburger-line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+}
+
+.dropdown-item-margin {
+  margin-top: 5px;
+}
+
+::ng-deep .dropdown-menu {
+  z-index: 9999 !important;
+}
+
+/* Footer del sidebar */
+.sidebar-footer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 16px;
+  text-align: center;
+}
+
+.footer-coomeva {
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: brightness(1.02);
+}
+
+.footer-supersalud {
+  width: auto;
+  max-height: 80px;
+  display: block;
+  margin: 0;
+  position: absolute;
+  left: -70px;
+  bottom: 64px;
+  transform: rotate(90deg);
+}
+
+/* === RESPONSIVE === */
+
+/* Tablets grandes */
+@media (max-width: 1200px) {
+  :host {
+    --sidebar-width: 220px;
+  }
+  .icon-register {
+    width: 60px;
+  }
+  .menu-main-content {
+    padding: 0.875rem;
+  }
+}
+
+/* Tablets medianas */
+@media (max-width: 1024px) {
+  :host {
+    --sidebar-width: 200px;
+  }
+  .icon-register {
+    width: 55px;
+  }
+  .image-sidebar {
+    max-width: 110px;
+  }
+}
+
+/* Tablets y móviles */
+@media (max-width: 768px) {
+  :host {
+    --sidebar-width: var(--sidebar-width-sm);
+  }
+
+  .sidebar {
+    width: var(--sidebar-width-sm);
+    transform: translateX(-100%);
+    box-shadow: 2px 0 15px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  .btn-close-sidebar {
+    display: block;
+    transition: all 0.3s ease;
+  }
+
+  .btn-close-sidebar:hover {
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .menu-content-wrapper {
+    margin-left: 0 !important;
+    transition: transform var(--transition);
+  }
+
+  .menu-content-wrapper.shift-right {
+    margin-left: 0 !important;
+  }
+
+
+
+  .icon-register {
+    width: 50px;
+  }
+
+  .icon-tiempo {
+    margin: 15px 0 15px 18px;
+    transform: scale(1.2, 1.8);
+  }
+
+  .sidebar-footer {
+    bottom: 12px;
+  }
+
+  .footer-coomeva {
+    max-width: 100px;
+  }
+
+  .footer-supersalud {
+    max-height: 64px;
+    left: 4px;
+    bottom: 6px;
+    transform: rotate(-90deg);
+    transform-origin: left bottom;
+  }
+  
+  .navbar {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  .navbar-padding {
+    padding: 12px;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  :host {
+    --sidebar-width-sm: 180px;
+  }
+  
+  .menu-item {
+    font-size: 14px;
+    gap: 8px;
+  }
+
+  .navbar-padding {
+    padding: 8px;
+  }
+
+  .menu-main-content {
+    padding: 0.5rem;
+  }
+
+  .image-sidebar {
+    max-width: 90px;
+  }
+  
+  .icon-register {
+    width: 45px;
+  }
+  
+  .sidebar-header {
+    margin-bottom: 1.5rem;
+  }
+  
+  .btn-hamburger {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .hamburger-line {
+    width: 22px;
+    height: 2px;
+  }
+}
+
+/* Móviles muy pequeños */
+@media (max-width: 360px) {
+  :host {
+    --sidebar-width-sm: 160px;
+  }
+  
+  .menu-item {
+    font-size: 13px;
+  }
+  
+  .image-sidebar {
+    max-width: 80px;
+  }
+  
+  .icon-register {
+    width: 40px;
+  }
+  
+  .menu-main-content {
+    padding: 0.25rem;
+  }
+}
+
+/* Todas las pantallas: menú hamburguesa siempre visible */
+.sidebar {
+  transform: translateX(-100%);
+}
+
+.sidebar.active {
+  transform: translateX(0);
+}
+
+.menu-content-wrapper {
+  margin-left: 0 !important;
+}
+
+.btn-hamburger {
+  display: flex !important;
+}
+
+/* Mejoras adicionales para touch */
+@media (hover: none) and (pointer: coarse) {
+  .menu-item {
+    padding: 0.75rem 0;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    touch-action: manipulation;
+  }
+  
+  .btn-hamburger {
+    min-height: 48px;
+    min-width: 48px;
+    touch-action: manipulation;
+  }
+  
+  .btn-close-sidebar {
+    min-height: 48px;
+    min-width: 48px;
+    touch-action: manipulation;
+  }
+  
+  /* Mejorar área de toque para enlaces del menú */
+  .menu-item {
+    position: relative;
+  }
+  
+  .menu-item::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -16px;
+    right: -16px;
+    bottom: -8px;
+    z-index: -1;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+  .sidebar {
+    width: 180px;
+  }
+  
+  .sidebar-footer {
+    bottom: 8px;
+  }
+  
+  .footer-coomeva {
+    max-width: 80px;
+  }
+}
+
+.img-container{
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1rem;
+}

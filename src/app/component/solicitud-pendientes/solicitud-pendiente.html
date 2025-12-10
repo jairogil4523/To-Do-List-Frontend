@@ -1,0 +1,87 @@
+<div>
+  <div class="card-title card">
+    <h4>
+      <span class="text-primary">Overtime MP</span>
+      <span class="text-secundary"> / Solicitudes Pendientes</span>
+    </h4>
+  </div>
+
+  <div class="card table-card margin-top-20">
+    <div class="table-header">
+      <div class="filters">
+        <!-- Filtro Colaborador -->
+      <div class="filter-item search-item">
+        <div class="form-floating custom-floating">
+          <input type="text" id="filtroColaborador" name="filtroColaborador" class="form-control border-info"
+            placeholder="Buscar colaborador..." [(ngModel)]="filtroColaborador" [matAutocomplete]="autoColaborador"
+            (input)="onFilterChange()" autocomplete="off" aria-label="Colaborador">
+          <label for="filtroColaborador">Colaborador</label>
+          <mat-autocomplete #autoColaborador="matAutocomplete">
+            <mat-option value="">Todos los colaboradores</mat-option>
+            <mat-option *ngFor="let colaborador of colaboradoresFiltrados" [value]="colaborador">
+              {{ colaborador }}
+            </mat-option>
+          </mat-autocomplete>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <div class="loading-container" *ngIf="isLoading">
+      <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    </div>
+
+    <table mat-table [dataSource]="dataSource" class="table mat-elevation-z0" *ngIf="!isLoading">
+      <!-- Nombre del Colaborador -->
+      <ng-container matColumnDef="nombreColaborador">
+        <th mat-header-cell *matHeaderCellDef> Nombre Colaborador </th>
+        <td mat-cell *matCellDef="let element"> {{ element.nombreColaborador }} </td>
+      </ng-container>
+
+      <!-- Tipo de Hora -->
+      <ng-container matColumnDef="tipoHora">
+        <th mat-header-cell *matHeaderCellDef> Tipo de Hora </th>
+        <td mat-cell *matCellDef="let element"> {{ element.tipoHora }} </td>
+      </ng-container>
+
+      <!-- Fecha Inicio -->
+      <ng-container matColumnDef="fechaHoraInicio">
+        <th mat-header-cell *matHeaderCellDef> Fecha Inicio </th>
+        <td mat-cell *matCellDef="let element"> {{ element.fechaHoraInicio | date:'dd/MM/yyyy hh:mm a' }} </td>
+      </ng-container>
+
+      <!-- Fecha Fin -->
+      <ng-container matColumnDef="fechaHoraFin">
+        <th mat-header-cell *matHeaderCellDef> Fecha Fin </th>
+        <td mat-cell *matCellDef="let element"> {{ element.fechaHoraFin | date:'dd/MM/yyyy hh:mm a' }} </td>
+      </ng-container>
+
+      <!-- Proceso -->
+      <ng-container matColumnDef="proceso">
+        <th mat-header-cell *matHeaderCellDef> Proceso </th>
+        <td mat-cell *matCellDef="let element"> {{ element.proceso }} </td>
+      </ng-container>
+
+      <!-- Acciones -->
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let element" class="acciones-cell">
+          <i class="bi bi-check-circle action-icon" title="Aprobar" role="button"
+            (click)="openConfirmApprove(element)"></i>
+          <i class="bi bi-x-circle action-icon text-danger" title="Rechazar" role="button"
+            (click)="openRejectModal(element)"></i>
+          <i class="bi bi-eye action-icon" title="Ver" role="button" (click)="openVer(element)"></i>
+        </td>
+      </ng-container>
+      <!-- Paginador -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <div class="table-footer">
+      <mat-paginator [length]="resultsLength" [pageSizeOptions]="[10, 30, 50]" aria-label="Paginador"></mat-paginator>
+    </div>
+  </div>
+  <!-- Hidden reference to custom header to satisfy Angular language service (not rendered) -->
+  <custom-datepicker-header *ngIf="false"></custom-datepicker-header>
+</div>

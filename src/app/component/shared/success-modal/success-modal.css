@@ -1,0 +1,99 @@
+.modal-logo {
+    display: block;
+    /* remove fixed width so image size controls dimensions */
+    margin: 0 auto 6px auto;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Overlay para oscurecer el fondo cuando aparece el modal */
+.success-modal-overlay {
+    position: fixed;
+    inset: 0; /* top:0; right:0; bottom:0; left:0 */
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* Contenedor principal del modal (caja blanca) */
+.success-modal-content {
+    position: relative;
+    width: 420px;
+    max-width: calc(100% - 32px);
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 14px 40px rgba(20, 40, 80, 0.25);
+    text-align: center;
+    padding: 60px 22px 22px 22px; /* reducido para disminuir altura del cuadro blanco */
+    z-index: 1010;
+}
+
+.success-modal-body {
+    text-align: center;
+    padding: 0 6px 6px 6px;
+}
+
+.success-icon {
+    width: 84px;
+    height: 84px;
+    margin: 8px auto 14px auto;
+    border-radius: 50%;
+    background: #fbfbfb;
+    color: #11a44d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    box-shadow: 0 6px 18px #fbfbfb;
+    border: 3px solid #11a44d;
+}
+
+.success-modal-body h3 {
+    margin: 8px 0 6px 0;
+    color: #2c3e50;
+    font-size: 1.125rem;
+}
+
+.success-modal-body p {
+    margin: 0 0 18px 0;
+    color: #6b7280;
+    font-size: 0.95rem;
+}
+
+.btn-continue {
+    background: linear-gradient(180deg, #0d6efd, #0a58ca);
+    color: #fff;
+    border: none;
+    padding: 10px 26px;
+    border-radius: 28px;
+    font-weight: 700;
+    box-shadow: 0 8px 18px rgba(13, 110, 253, 0.18);
+    cursor: pointer;
+}
+
+.btn-continue:active {
+    transform: translateY(1px);
+}
+
+/* Posicionar el logo fuera (flotando arriba) de la caja del modal */
+.success-modal-content .modal-logo {
+    position: absolute;
+    top: -130px; /* subido un poco más según petición */
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+}
+
+/* Asegurar que la imagen del logo no crezca más allá del contenedor */
+.success-modal-content .modal-logo > .success-logo,
+.success-modal-content .modal-logo img.success-logo {
+    width: 250px !important; /* tamaño fijo desde CSS según solicitud */
+    height: auto !important;
+    max-width: none !important;
+    display: block !important;
+}
